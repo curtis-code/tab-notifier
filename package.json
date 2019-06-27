@@ -1,0 +1,19 @@
+{
+  "name": "tab-notifier",
+  "version": "0.0.0-dev.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/curtistimson/tab-notifier.git"
+  },
+  "author": "Curtis Timson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/curtistimson/tab-notifier/issues"
+  },
+  "homepage": "https://github.com/curtistimson/tab-notifier#readme"
+}
