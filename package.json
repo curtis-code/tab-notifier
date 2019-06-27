@@ -1,10 +1,10 @@
 {
   "name": "tab-notifier",
-  "version": "0.0.0-dev.0",
+  "version": "0.0.0-dev.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/curtistimson/tab-notifier/issues"
   },
-  "homepage": "https://github.com/curtistimson/tab-notifier#readme"
+  "homepage": "https://github.com/curtistimson/tab-notifier#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5"
+  }
 }
