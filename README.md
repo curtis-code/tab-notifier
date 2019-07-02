@@ -1,1 +1,7 @@
-# tab-notifier
+# Tab Notifier
+
+## Build
+
+```
+npm run build
+```
