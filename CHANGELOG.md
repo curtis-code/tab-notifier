@@ -5,6 +5,7 @@
 ### Breaking Changes
 
 ### Minor Changes
+ - Dev - Add eslinting
 
 ### Patches
  - Fix package main path
