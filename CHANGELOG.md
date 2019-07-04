@@ -9,4 +9,5 @@
 ### Patches
 
 ---
-## `0.0.0-dev`
+## `0.1.0`
+ - Remove watch from webpack
