@@ -5,8 +5,10 @@
 ### Breaking Changes
 
 ### Minor Changes
+ - Dev - Add eslinting
 
 ### Patches
+ - Fix package main path
 
 ---
 ## `0.1.0`

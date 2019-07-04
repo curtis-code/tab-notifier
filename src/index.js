@@ -16,13 +16,13 @@ class TabNotifier {
                     : this.state.currentTitle;
             }, (intervalSpeed) ? intervalSpeed : 1000);
         }
-    };
+    }
 
     stop() {
         window.clearInterval(this.state.interval);
         this.state.interval = null;
         document.title = this.state.currentTitle;
-    };
+    }
 
 }
 
