@@ -1,39 +1,4 @@
-// (function(window, document){
-
-//   window.pageTitleNotification = (function () {
-
-//       const config = {
-//           currentTitle: null,
-//           interval: null
-//       };
-
-//       const on = function (notificationText, intervalSpeed) {
-//           if (!config.interval) {
-//               config.currentTitle = document.title;
-//               config.interval = window.setInterval(function() {
-//                   document.title = (config.currentTitle === document.title)
-//                       ? notificationText
-//                       : config.currentTitle;
-//               }, (intervalSpeed) ? intervalSpeed : 1000);
-//           }
-//       };
-
-//       const off = function () {
-//           window.clearInterval(config.interval);
-//           config.interval = null;
-//           document.title = config.currentTitle;
-//       };
-
-//       return {
-//           on,
-//           off,
-//       };
-
-//   })();
-
-// }(window, document));
-
-export default class TabNotifier {
+class TabNotifier {
 
     constructor(){
         this.state = {
@@ -60,3 +25,5 @@ export default class TabNotifier {
     };
 
 }
+
+export default new TabNotifier;
