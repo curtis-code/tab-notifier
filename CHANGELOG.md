@@ -7,6 +7,7 @@
 ### Minor Changes
 
 ### Patches
+ - Fix package main path
 
 ---
 ## `0.1.0`
