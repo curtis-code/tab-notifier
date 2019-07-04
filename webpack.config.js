@@ -5,6 +5,7 @@ module.exports = {
   output: {
     filename: 'tabnotifier.min.js',
     library: 'tabNotifier',
+    libraryExport: 'default',
     libraryTarget: 'window',
     path: path.resolve(__dirname, 'dist')
   },

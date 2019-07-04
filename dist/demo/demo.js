@@ -1,10 +1,12 @@
 var btnOn = document.getElementById('btn-on');
 var btnOff = document.getElementById('btn-off');
 
+var tabNotify = new tabNotifier;
+
 btnOn.addEventListener('click', function(){
-    pageTitleNotification.on("test", 1000);
+    tabNotify.notify('test', 1000);
 });
 
 btnOff.addEventListener('click', function(){
-    pageTitleNotification.off();
+    tabNotify.stop();
 });

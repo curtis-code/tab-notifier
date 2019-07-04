@@ -34,22 +34,29 @@
 // }(window, document));
 
 export default class TabNotifier {
+
+    constructor(){
+        this.state = {
+            interval: null,
+            currentTitle: null,
+        }
+    }
     
-    on(notificationText, intervalSpeed) {
-        if (!config.interval) {
-            config.currentTitle = document.title;
-            config.interval = window.setInterval(function() {
-                document.title = (config.currentTitle === document.title)
+    notify(notificationText, intervalSpeed) {
+        if (!this.state.interval) {
+            this.state.currentTitle = document.title;
+            this.state.interval = window.setInterval(() => {
+                document.title = (this.state.currentTitle === document.title)
                     ? notificationText
-                    : config.currentTitle;
+                    : this.state.currentTitle;
             }, (intervalSpeed) ? intervalSpeed : 1000);
         }
     };
 
-    off() {
-        window.clearInterval(config.interval);
-        config.interval = null;
-        document.title = config.currentTitle;
-    }
+    stop() {
+        window.clearInterval(this.state.interval);
+        this.state.interval = null;
+        document.title = this.state.currentTitle;
+    };
 
 }
