@@ -4,6 +4,9 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'tabnotifier.min.js',
+    library: 'tabNotifier',
+    libraryExport: 'default',
+    libraryTarget: 'window',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -19,5 +22,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  watch: true,
 };
