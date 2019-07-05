@@ -7,14 +7,14 @@ class TabNotifier {
     }
   }
     
-  notify(notificationText, intervalSpeed) {
+  notify(notificationText, intervalSpeed = 1000) {
     if (!this.state.interval) {
       this.state.currentTitle = document.title;
       this.state.interval = window.setInterval(() => {
         document.title = (this.state.currentTitle === document.title)
           ? notificationText
           : this.state.currentTitle;
-      }, (intervalSpeed) ? intervalSpeed : 1000);
+      }, intervalSpeed);
     }
   }
 
