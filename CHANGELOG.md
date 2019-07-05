@@ -6,6 +6,7 @@
 
 ### Minor Changes
  - Dev - Add eslinting
+ - Dev - Add editor config
 
 ### Patches
  - Fix package main path
