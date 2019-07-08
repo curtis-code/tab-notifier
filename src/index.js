@@ -28,6 +28,7 @@ class TabNotifier {
     window.clearInterval(this.state.interval);
     this.state.interval = null;
     document.title = this.state.originalTitle;
+    this.state.notificationDisplayed = false;
   }
 
 }
