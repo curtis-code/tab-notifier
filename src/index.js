@@ -3,6 +3,7 @@ class TabNotifier {
   constructor(){
     this.state = {
       interval: null,
+      notificationDisplayed: null,
       originalTitle: null,
     }
   }
@@ -15,9 +16,10 @@ class TabNotifier {
     }
     if (!this.state.interval) {
       this.state.interval = window.setInterval(() => {
-        document.title = (document.title === this.state.originalTitle)
+        document.title = (!this.state.notificationDisplayed)
           ? value
           : this.state.originalTitle;
+        this.state.notificationDisplayed = !this.state.notificationDisplayed;
       }, options.intervalSpeed);
     }
   }
