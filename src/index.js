@@ -11,8 +11,8 @@ class TabNotifier {
   }
     
   notify(value, options = {
-    intervalSpeed: 1000,
-    replaceTitle: true,
+    blinkSpeed: 1000,
+    replaceTitle: false,
   }) {
     generateTitle();
     if (!this.state.originalTitle){
@@ -26,7 +26,7 @@ class TabNotifier {
             options.replaceTitle)
           : this.state.originalTitle;
         this.state.notificationDisplayed = !this.state.notificationDisplayed;
-      }, options.intervalSpeed);
+      }, options.blinkSpeed);
     }
   }
 
