@@ -3,17 +3,19 @@ class TabNotifier {
   constructor(){
     this.state = {
       interval: null,
-      currentTitle: null,
+      originalTitle: null,
     }
   }
     
   notify(notificationText, intervalSpeed = 1000) {
+    if (!this.state.originalTitle){
+      this.state.originalTitle = document.title;
+    }
     if (!this.state.interval) {
-      this.state.currentTitle = document.title;
       this.state.interval = window.setInterval(() => {
-        document.title = (this.state.currentTitle === document.title)
+        document.title = (this.state.originalTitle === document.title)
           ? notificationText
-          : this.state.currentTitle;
+          : this.state.originalTitle;
       }, intervalSpeed);
     }
   }
@@ -21,7 +23,7 @@ class TabNotifier {
   stop() {
     window.clearInterval(this.state.interval);
     this.state.interval = null;
-    document.title = this.state.currentTitle;
+    document.title = this.state.originalTitle;
   }
 
 }
