@@ -3,7 +3,7 @@ var btnOff = document.getElementById('btn-off');
 
 btnOn.addEventListener('click', function(){
   tabNotifier.notify('test', {
-    intervalSpeed: 1000
+    blinkSpeed: 1000
   });
 });
 
