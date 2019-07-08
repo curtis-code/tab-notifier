@@ -7,7 +7,9 @@ class TabNotifier {
     }
   }
     
-  notify(value, intervalSpeed = 1000) {
+  notify(value, options = {
+    intervalSpeed: 1000
+  }) {
     if (!this.state.originalTitle){
       this.state.originalTitle = document.title;
     }
@@ -16,7 +18,7 @@ class TabNotifier {
         document.title = (document.title === this.state.originalTitle)
           ? value
           : this.state.originalTitle;
-      }, intervalSpeed);
+      }, options.intervalSpeed);
     }
   }
 
