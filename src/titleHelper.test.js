@@ -5,5 +5,5 @@ test('generateTitle - replaceText', () => {
 });
 
 test('generateTitle - do not replaceText', () => {
-  expect(generateTitle('test', 'original title', false)).toBe('(test) original title');
+  expect(generateTitle(1, 'original title', false)).toBe('(1) original title');
 });
