@@ -10,17 +10,16 @@ class TabNotifier {
     if (!state.originalTitle){
       state.originalTitle = document.title;
     }
-    if (!state.interval) {
-      state.interval = window.setInterval(() => {
-        if (!state.notificationDisplayed){
-          displayNotification(document, state.originalTitle, options.replaceTitle, value);
-        }
-        else{
-          document.title = state.originalTitle;
-        }
-        state.notificationDisplayed = !state.notificationDisplayed;
-      }, options.blinkSpeed);
-    }
+    window.clearInterval(state.interval);
+    state.interval = window.setInterval(() => {
+      if (!state.notificationDisplayed){
+        displayNotification(document, state.originalTitle, options.replaceTitle, value);
+      }
+      else{
+        document.title = state.originalTitle;
+      }
+      state.notificationDisplayed = !state.notificationDisplayed;
+    }, options.blinkSpeed);
   }
 
   stop() {
