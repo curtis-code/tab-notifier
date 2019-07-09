@@ -14,7 +14,6 @@ class TabNotifier {
     blinkSpeed: 1000,
     replaceTitle: false,
   }) {
-    this.stop();
     if (!this.state.originalTitle){
       this.state.originalTitle = document.title;
     }
