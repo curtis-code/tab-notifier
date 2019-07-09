@@ -1,4 +1,4 @@
-import { generateTitle } from './titleHelper';
+import { displayNotification } from './helpers/notificationHelper';
 
 class TabNotifier {
 
@@ -19,11 +19,12 @@ class TabNotifier {
     }
     if (!this.state.interval) {
       this.state.interval = window.setInterval(() => {
-        document.title = (!this.state.notificationDisplayed)
-          ? generateTitle(value,
-            this.state.originalTitle,
-            options.replaceTitle)
-          : this.state.originalTitle;
+        if (!this.state.notificationDisplayed){
+          displayNotification(document, this.state.originalTitle, options.replaceTitle, value);
+        }
+        else{
+          document.title = this.state.originalTitle;
+        }
         this.state.notificationDisplayed = !this.state.notificationDisplayed;
       }, options.blinkSpeed);
     }
