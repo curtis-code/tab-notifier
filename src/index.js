@@ -1,27 +1,40 @@
+import { displayNotification } from './helpers/notificationHelper';
+
 class TabNotifier {
 
   constructor(){
     this.state = {
       interval: null,
-      currentTitle: null,
+      notificationDisplayed: false,
+      originalTitle: null,
     }
   }
     
-  notify(notificationText, intervalSpeed = 1000) {
+  notify(value, options = {
+    blinkSpeed: 1000,
+    replaceTitle: false,
+  }) {
+    if (!this.state.originalTitle){
+      this.state.originalTitle = document.title;
+    }
     if (!this.state.interval) {
-      this.state.currentTitle = document.title;
       this.state.interval = window.setInterval(() => {
-        document.title = (this.state.currentTitle === document.title)
-          ? notificationText
-          : this.state.currentTitle;
-      }, intervalSpeed);
+        if (!this.state.notificationDisplayed){
+          displayNotification(document, this.state.originalTitle, options.replaceTitle, value);
+        }
+        else{
+          document.title = this.state.originalTitle;
+        }
+        this.state.notificationDisplayed = !this.state.notificationDisplayed;
+      }, options.blinkSpeed);
     }
   }
 
   stop() {
     window.clearInterval(this.state.interval);
     this.state.interval = null;
-    document.title = this.state.currentTitle;
+    document.title = this.state.originalTitle;
+    this.state.notificationDisplayed = false;
   }
 
 }

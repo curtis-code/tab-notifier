@@ -7,6 +7,7 @@
 ### Minor Changes
  - Dev - Add eslinting
  - Dev - Add editor config
+ - Extend notify options
 
 ### Patches
  - Fix package main path
