@@ -1,9 +1,16 @@
 import { generateTitle } from './titleHelper';
+import state from '../state';
 
-test('generateTitle - replaceText', () => {
-  expect(generateTitle('test', 'original title', true)).toBe('test');
-});
+jest.mock('../state', () => ({
+  originalTitle: 'original title'
+}));
 
-test('generateTitle - do not replaceText', () => {
-  expect(generateTitle(1, 'original title', false)).toBe('(1) original title');
+describe('generateTitle', () => {
+  it('replace text', () => {
+    expect(generateTitle('test', true)).toBe('test');
+  });
+
+  it('do not replace text', () => {
+    expect(generateTitle(1, false)).toBe('(1) original title');
+  });
 });

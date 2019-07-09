@@ -1,8 +1,10 @@
-export function generateTitle(value, originalTitle, replaceTitle) {
+import state from '../state';
+
+export function generateTitle(value, replaceTitle) {
   if (replaceTitle){
     return value;
   }
   else {
-    return `(${value}) ${originalTitle}`;
+    return `(${value}) ${state.originalTitle}`;
   }
 }

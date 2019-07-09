@@ -1,8 +1,8 @@
 import state from '../state';
 import { generateTitle } from './titleHelper';
 
-export function displayNotification(document, originalTitle, replaceTitle, value) {
-  document.title = generateTitle(value, originalTitle, replaceTitle);
+export function displayNotification(document, replaceTitle, value) {
+  document.title = generateTitle(value, replaceTitle);
   state.notificationDisplayed = true;
 }
 
@@ -15,7 +15,7 @@ export function blinkNotification(document, window, replaceTitle, blinkSpeed, va
   window.clearInterval(state.interval);
   state.interval = window.setInterval(() => {
     (!state.notificationDisplayed)
-      ? displayNotification(document, state.originalTitle, replaceTitle, value)
+      ? displayNotification(document, replaceTitle, value)
       : hideNotification(document); 
   }, blinkSpeed);
 }

@@ -15,7 +15,7 @@ class TabNotifier {
       blinkNotification(document, window, options.replaceTitle, options.blinkSpeed, value);
     }
     else {
-      displayNotification(document, state.originalTitle, options.replaceTitle, value);
+      displayNotification(document, options.replaceTitle, value);
     }
   }
 
