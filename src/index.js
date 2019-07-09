@@ -1,5 +1,5 @@
 import state from './state';
-import { displayNotification } from './helpers/notificationHelper';
+import { blinkNotification } from './helpers/notificationHelper';
 
 class TabNotifier {
     
@@ -12,13 +12,7 @@ class TabNotifier {
     }
     window.clearInterval(state.interval);
     state.interval = window.setInterval(() => {
-      if (!state.notificationDisplayed){
-        displayNotification(document, state.originalTitle, options.replaceTitle, value);
-      }
-      else{
-        document.title = state.originalTitle;
-      }
-      state.notificationDisplayed = !state.notificationDisplayed;
+      blinkNotification(document, options.replaceTitle, value);
     }, options.blinkSpeed);
   }
 
