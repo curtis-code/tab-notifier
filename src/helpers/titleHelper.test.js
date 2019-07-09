@@ -1,5 +1,4 @@
 import { generateTitle } from './titleHelper';
-import state from '../state';
 
 jest.mock('../state', () => ({
   originalTitle: 'original title'
