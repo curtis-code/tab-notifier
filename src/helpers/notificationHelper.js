@@ -11,8 +11,11 @@ export function hideNotification(document) {
   state.notificationDisplayed = false;
 }
 
-export function blinkNotification(document, replaceTitle, value) {
-  (!state.notificationDisplayed)
-    ? displayNotification(document, state.originalTitle, replaceTitle, value)
-    : hideNotification(document); 
+export function blinkNotification(document, window, replaceTitle, blinkSpeed, value) {
+  window.clearInterval(state.interval);
+  state.interval = window.setInterval(() => {
+    (!state.notificationDisplayed)
+      ? displayNotification(document, state.originalTitle, replaceTitle, value)
+      : hideNotification(document); 
+  }, blinkSpeed);
 }

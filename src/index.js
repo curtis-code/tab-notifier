@@ -1,19 +1,22 @@
 import state from './state';
-import { blinkNotification } from './helpers/notificationHelper';
+import { blinkNotification, displayNotification } from './helpers/notificationHelper';
 
 class TabNotifier {
     
   notify(value, options = {
+    blink: false,
     blinkSpeed: 1000,
     replaceTitle: false,
   }) {
     if (!state.originalTitle){
       state.originalTitle = document.title;
     }
-    window.clearInterval(state.interval);
-    state.interval = window.setInterval(() => {
-      blinkNotification(document, options.replaceTitle, value);
-    }, options.blinkSpeed);
+    if (options.blink){
+      blinkNotification(document, window, options.replaceTitle, options.blinkSpeed, value);
+    }
+    else {
+      displayNotification(document, state.originalTitle, options.replaceTitle, value);
+    }
   }
 
   stop() {
