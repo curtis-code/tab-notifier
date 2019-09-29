@@ -1,61 +1,96 @@
 import TabNotifier from "./index";
 
 const defaultIntervalSpeed = 1000;
-const originalTitle = "test";
-const newTitle = "test2";
+const originalTitle = "originalTitle";
+const newTitle = "newTitle";
 
-test("notify updates document title, and then alternates", () => {
+beforeEach(() => {
   jest.useFakeTimers();
-
   global.window.document.title = originalTitle;
-
-  TabNotifier.notifyMessage(newTitle);
-
-  jest.advanceTimersByTime(defaultIntervalSpeed);
-  expect(global.window.document.title).toEqual(newTitle);
-
-  jest.advanceTimersByTime(defaultIntervalSpeed);
-  expect(global.window.document.title).toEqual(originalTitle);
-
-  jest.advanceTimersByTime(defaultIntervalSpeed);
-  expect(global.window.document.title).toEqual(newTitle);
-
-  jest.useRealTimers();
 });
 
-test("stop resets document title immediately", () => {
-  jest.useFakeTimers();
-
-  global.window.document.title = originalTitle;
-
-  TabNotifier.notifyMessage(newTitle);
-
-  jest.advanceTimersByTime(defaultIntervalSpeed);
-  expect(global.window.document.title).toEqual(newTitle);
-
+afterEach(() => {
+  jest.useRealTimers();
   TabNotifier.reset();
-  expect(global.window.document.title).toEqual(originalTitle);
-
-  jest.useRealTimers();
 });
 
-test("intervalSpeed can be configured", () => {
-  jest.useFakeTimers();
+describe("notify", () => {
+  test("notify() adds (1)", () => {
+    TabNotifier.notify();
+    expect(global.window.document.title).toEqual(`(1) ${originalTitle}`);
+  });
 
-  const intervalSpeed = 2000;
+  test("notify(2) adds (2)", () => {
+    TabNotifier.notify(2);
+    expect(global.window.document.title).toEqual(`(2) ${originalTitle}`);
+  });
 
-  global.window.document.title = originalTitle;
+  test("notify() + reset() changes back to original title", () => {
+    TabNotifier.notify();
+    expect(global.window.document.title).toEqual(`(1) ${originalTitle}`);
+    TabNotifier.reset();
+    expect(global.window.document.title).toEqual(originalTitle);
+  });
 
-  TabNotifier.notifyMessage(newTitle, { intervalSpeed });
+  test("notify() + notify(2) + reset() changes back to the original title", () => {
+    TabNotifier.notify();
+    expect(global.window.document.title).toEqual(`(1) ${originalTitle}`);
+    TabNotifier.notify(2);
+    expect(global.window.document.title).toEqual(`(2) ${originalTitle}`);
+    TabNotifier.reset();
+    expect(global.window.document.title).toEqual(originalTitle);
+  });
+});
 
-  jest.advanceTimersByTime(intervalSpeed);
-  expect(global.window.document.title).toEqual(newTitle);
+describe("notifyMessage", () => {
+  test("notify updates document title, and then alternates", () => {
+    TabNotifier.notifyMessage(newTitle);
 
-  jest.advanceTimersByTime(intervalSpeed);
-  expect(global.window.document.title).toEqual(originalTitle);
+    jest.advanceTimersByTime(defaultIntervalSpeed);
+    expect(global.window.document.title).toEqual(newTitle);
 
-  jest.advanceTimersByTime(intervalSpeed);
-  expect(global.window.document.title).toEqual(newTitle);
+    jest.advanceTimersByTime(defaultIntervalSpeed);
+    expect(global.window.document.title).toEqual(originalTitle);
 
-  jest.useRealTimers();
+    jest.advanceTimersByTime(defaultIntervalSpeed);
+    expect(global.window.document.title).toEqual(newTitle);
+
+    TabNotifier.reset();
+  });
+
+  test("intervalSpeed can be configured", () => {
+    const intervalSpeed = 2000;
+
+    TabNotifier.notifyMessage(newTitle, { intervalSpeed });
+
+    jest.advanceTimersByTime(intervalSpeed);
+    expect(global.window.document.title).toEqual(newTitle);
+
+    jest.advanceTimersByTime(intervalSpeed);
+    expect(global.window.document.title).toEqual(originalTitle);
+
+    jest.advanceTimersByTime(intervalSpeed);
+    expect(global.window.document.title).toEqual(newTitle);
+  });
+
+  test("reset() after notifyMessage() resets document title immediately", () => {
+    TabNotifier.notifyMessage(newTitle);
+
+    global.window.document.title = "newTitle";
+
+    TabNotifier.reset();
+    expect(global.window.document.title).toEqual(originalTitle);
+  });
+});
+
+describe("reset", () => {
+  test("reset() resets document title", () => {
+    TabNotifier.notifyMessage(newTitle);
+
+    jest.advanceTimersByTime(defaultIntervalSpeed);
+    expect(global.window.document.title).toEqual(newTitle);
+
+    TabNotifier.reset();
+    expect(global.window.document.title).toEqual(originalTitle);
+  });
 });
