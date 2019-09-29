@@ -9,7 +9,7 @@ test("notify updates document title, and then alternates", () => {
 
   global.window.document.title = originalTitle;
 
-  TabNotifier.notify(newTitle);
+  TabNotifier.notifyMessage(newTitle);
 
   jest.advanceTimersByTime(defaultIntervalSpeed);
   expect(global.window.document.title).toEqual(newTitle);
@@ -28,7 +28,7 @@ test("stop resets document title immediately", () => {
 
   global.window.document.title = originalTitle;
 
-  TabNotifier.notify(newTitle);
+  TabNotifier.notifyMessage(newTitle);
 
   jest.advanceTimersByTime(defaultIntervalSpeed);
   expect(global.window.document.title).toEqual(newTitle);
@@ -46,7 +46,7 @@ test("intervalSpeed can be configured", () => {
 
   global.window.document.title = originalTitle;
 
-  TabNotifier.notify(newTitle, intervalSpeed);
+  TabNotifier.notifyMessage(newTitle, { intervalSpeed });
 
   jest.advanceTimersByTime(intervalSpeed);
   expect(global.window.document.title).toEqual(newTitle);

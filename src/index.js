@@ -6,7 +6,10 @@ function TabNotifier() {
 
   let state = { ...initialState };
 
-  this.notify = (notificationText, intervalSpeed) => {
+  this.notifyMessage = (
+    notificationText,
+    { intervalSpeed } = { intervalSpeed: 1000 }
+  ) => {
     if (!state.interval) {
       state.baseTitle = document.title;
       state.interval = window.setInterval(() => {
@@ -14,7 +17,7 @@ function TabNotifier() {
           state.baseTitle === document.title
             ? notificationText
             : state.baseTitle;
-      }, intervalSpeed || 1000);
+      }, intervalSpeed);
     }
   };
 
