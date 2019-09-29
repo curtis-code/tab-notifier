@@ -1,25 +1,27 @@
 function TabNotifier() {
-  const state = {
+  const initialState = {
     interval: null,
-    originalTitle: null
+    baseTitle: null
   };
+
+  let state = { ...initialState };
 
   this.notify = (notificationText, intervalSpeed) => {
     if (!state.interval) {
-      state.originalTitle = document.title;
+      state.baseTitle = document.title;
       state.interval = window.setInterval(() => {
         document.title =
-          state.originalTitle === document.title
+          state.baseTitle === document.title
             ? notificationText
-            : state.originalTitle;
+            : state.baseTitle;
       }, intervalSpeed || 1000);
     }
   };
 
-  this.stop = () => {
+  this.reset = () => {
     window.clearInterval(state.interval);
-    state.interval = null;
-    document.title = state.originalTitle;
+    document.title = state.baseTitle;
+    state = { ...initialState };
   };
 }
 

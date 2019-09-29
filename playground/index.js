@@ -5,5 +5,5 @@ document.getElementById("turnOn").addEventListener("click", () => {
 });
 
 document.getElementById("turnOff").addEventListener("click", () => {
-  TabNotifier.stop();
+  TabNotifier.reset();
 });

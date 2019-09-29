@@ -33,7 +33,7 @@ test("stop resets document title immediately", () => {
   jest.advanceTimersByTime(defaultIntervalSpeed);
   expect(global.window.document.title).toEqual(newTitle);
 
-  TabNotifier.stop();
+  TabNotifier.reset();
   expect(global.window.document.title).toEqual(originalTitle);
 
   jest.useRealTimers();
