@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "serve:build": "http-server ./dist",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
     "test": "jest --watch"
@@ -30,6 +31,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
     "prettier": "^1.18.2",
