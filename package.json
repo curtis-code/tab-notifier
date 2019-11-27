@@ -25,6 +25,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "babel-loader": "^8.0.6",
+    "coveralls": "^3.0.9",
     "eslint": "^6.5.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.3.0",
@@ -40,7 +41,13 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.8.1"
   },
-  "collectCoverageFrom": [
-    "/src/**/*.{js,jsx}"
-  ]
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ]
+  }
 }
