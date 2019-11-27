@@ -1,6 +1,6 @@
 # Tab Notifier
 
-<img src="https://img.shields.io/npm/v/tab-notifier.svg" alt="Travis CI Build Status" />
+<img src="https://img.shields.io/npm/v/tab-notifier.svg" alt="Travis CI Build Status" /> <img src="https://api.travis-ci.org/curtistimson/tab-notifier.svg?branch=master" /> [![Coverage Status](https://coveralls.io/repos/github/curtistimson/tab-notifier/badge.svg?branch=ci)](https://coveralls.io/github/curtistimson/tab-notifier?branch=ci)
 
 ## Usage
 
